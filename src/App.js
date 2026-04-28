@@ -1,22 +1,15 @@
 import './App.css';
 
-const sites = [
-  { name: 'site1', host: 'site1.bhenning.com' },
-  { name: 'site2', host: 'site2.bhenning.com' },
-  { name: 'site3', host: 'site3.bhenning.com' },
-  { name: 'site4', host: 'site4.bhenning.com' },
-  { name: 'site5', host: 'site5.bhenning.com' },
-  { name: 'site6', host: 'site6.bhenning.com' },
-  { name: 'site7', host: 'site7.bhenning.com' },
-  { name: 'site8', host: 'site8.bhenning.com' },
-  { name: 'site9', host: 'site9.bhenning.com' },
-];
+const domain = window.location.hostname.endsWith('brianhenning.com') ? 'brianhenning.com' : 'bhenning.com';
+const siteLabels = ['site1', 'site2', 'site3', 'site4', 'site5', 'site6', 'site7', 'site8', 'site9'];
 
 function App() {
+  const sites = siteLabels.map(name => ({ name, host: `${name}.${domain}` }));
+
   return (
     <div className="App">
       <header className="site-header">
-        <p className="header-eyebrow">bhenning.com / dashboard</p>
+        <p className="header-eyebrow">{domain} / dashboard</p>
         <h1>site<em>4</em></h1>
         <p className="header-sub">tools &amp; utilities — select a destination</p>
         <div className="header-rule" />
@@ -35,7 +28,7 @@ function App() {
         </div>
       </section>
 
-      <footer className="site-footer">bhenning.com &mdash; site4</footer>
+      <footer className="site-footer">{domain} &mdash; site4</footer>
     </div>
   );
 }
